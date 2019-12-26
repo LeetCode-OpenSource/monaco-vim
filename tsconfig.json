@@ -1,0 +1,50 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "outDir": "lib",
+    "allowJs": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es5",
+      "es2015",
+      "es2016",
+      "es2017",
+      "esnext"
+    ],
+
+    "sourceMap": false,
+    "importHelpers": true,
+    "newLine": "LF",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "downlevelIteration": true,
+    "noEmitHelpers": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "suppressExcessPropertyErrors": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "include": [
+    "./src",
+    "global.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+  ]
+}

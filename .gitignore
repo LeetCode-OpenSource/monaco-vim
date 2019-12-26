@@ -3,3 +3,4 @@ dist/
 *.log
 lib/
 local/
+.cache-eslint/

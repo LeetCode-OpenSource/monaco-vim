@@ -1,0 +1,51 @@
+parser: '@typescript-eslint/parser'
+
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+
+env:
+  browser: true
+  es6: true
+  node: true
+  mocha: true
+
+plugins:
+  - import
+  
+extends:
+  - eslint:recommended
+  - plugin:prettier/recommended
+
+globals:
+  monaco: readonly
+
+rules: 
+  # 0 = off, 1 = warn, 2 = error
+  'space-before-function-paren': 0
+  'no-useless-constructor': 2
+  'no-undef': 2
+  'no-console': [2, { allow: ['error', 'warn', 'info']}]
+  'comma-dangle': ['error', 'only-multiline']
+  'no-unused-vars': 0
+  'no-var': 2
+  'one-var-declaration-per-line': 2
+  'prefer-const': 2
+  'no-const-assign': 2
+  'no-duplicate-imports': 2
+  'no-use-before-define': [2, { 'functions': false, 'classes': false }]
+  'eqeqeq': [2, 'always', { 'null': 'ignore' }]
+  'no-case-declarations': 0
+  'no-restricted-syntax': [2, {
+    'selector': 'BinaryExpression[operator=/(==|===|!=|!==)/][left.raw=true], BinaryExpression[operator=/(==|===|!=|!==)/][right.raw=true]',
+    'message': Don't compare for equality against boolean literals
+  }]
+
+  'import/first': 2
+  'import/newline-after-import': 2
+
+  'sonarjs/cognitive-complexity': 0
+  'sonarjs/no-duplicate-string': 0
+  'sonarjs/no-big-function': 0
+  'sonarjs/no-identical-functions': 0
+  'sonarjs/no-small-switch': 0
