@@ -4,6 +4,7 @@
   "description": "Vim keybindings for monaco-editor",
   "main": "./lib/index.js",
   "scripts": {
+    "test": "echo \"No test in this repo\"",
     "start": "webpack-dev-server --mode development --host=0.0.0.0 --port=8080",
     "lint": "eslint . --ext .js,.ts --cache --cache-location ./.cache-eslint/",
     "clean": "rm -rf lib dist local",
@@ -57,7 +58,7 @@
   "lint-staged": {
     "*.@(ts|tsx|js|jsx)": [
       "prettier --write",
-      "yarn lint -- --fix",
+      "yarn lint --fix",
       "git add"
     ]
   },

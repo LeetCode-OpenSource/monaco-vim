@@ -30,14 +30,15 @@ module.exports = (_env, argv) => {
       'monaco-vim': isProd ? './src/index.ts' : './example/demo.js',
     },
     output: getOutput(isProd),
+    resolve: {
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.ts'],
+    },
     module: {
       rules: [
         {
-          test: /\.(js|ts)$/,
+          test: /\.(t|j)sx?$/,
           exclude: /node_modules/,
-          use: {
-            loader: 'ts-loader',
-          },
+          loader: 'ts-loader',
         },
         {
           test: /\.css$/,
@@ -45,11 +46,7 @@ module.exports = (_env, argv) => {
         },
         {
           test: /\.(ttf|eot|woff|woff2)$/i,
-          use: [
-            {
-              loader: 'file-loader',
-            },
-          ],
+          use: 'file-loader',
         },
       ],
     },
