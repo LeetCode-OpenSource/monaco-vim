@@ -57,28 +57,28 @@ if (String.prototype.normalize) {
   }
 }
 
-const StringStream = function(string, tabSize) {
-  this.pos = this.start = 0
-  this.string = string
-  this.tabSize = tabSize || 8
-  this.lastColumnPos = this.lastColumnValue = 0
-  this.lineStart = 0
-}
+class StringStream {
+  constructor(string, tabSize) {
+    this.pos = this.start = 0
+    this.string = string
+    this.tabSize = tabSize || 8
+    this.lastColumnPos = this.lastColumnValue = 0
+    this.lineStart = 0
+  }
 
-StringStream.prototype = {
-  eol: function() {
+  eol() {
     return this.pos >= this.string.length
-  },
-  sol: function() {
+  }
+  sol() {
     return this.pos === this.lineStart
-  },
-  peek: function() {
+  }
+  peek() {
     return this.string.charAt(this.pos) || undefined
-  },
-  next: function() {
+  }
+  next() {
     if (this.pos < this.string.length) return this.string.charAt(this.pos++)
-  },
-  eat: function(match) {
+  }
+  eat(match) {
     const ch = this.string.charAt(this.pos)
     let ok
     if (typeof match === 'string') {
@@ -90,37 +90,37 @@ StringStream.prototype = {
       ++this.pos
       return ch
     }
-  },
-  eatWhile: function(match) {
+  }
+  eatWhile(match) {
     const start = this.pos
     // while (this.eat(match)){}
     return this.pos > start
-  },
-  eatSpace: function() {
+  }
+  eatSpace() {
     const start = this.pos
     while (/[\s\u00a0]/.test(this.string.charAt(this.pos))) ++this.pos
     return this.pos > start
-  },
-  skipToEnd: function() {
+  }
+  skipToEnd() {
     this.pos = this.string.length
-  },
-  skipTo: function(ch) {
+  }
+  skipTo(ch) {
     const found = this.string.indexOf(ch, this.pos)
     if (found > -1) {
       this.pos = found
       return true
     }
-  },
-  backUp: function(n) {
+  }
+  backUp(n) {
     this.pos -= n
-  },
-  column: function() {
+  }
+  column() {
     throw 'not implemented'
-  },
-  indentation: function() {
+  }
+  indentation() {
     throw 'not implemented'
-  },
-  match: function(pattern, consume, caseInsensitive) {
+  }
+  match(pattern, consume, caseInsensitive) {
     if (typeof pattern === 'string') {
       const cased = function(str) {
         return caseInsensitive ? str.toLowerCase() : str
@@ -136,18 +136,18 @@ StringStream.prototype = {
       if (match && consume !== false) this.pos += match[0].length
       return match
     }
-  },
-  current: function() {
+  }
+  current() {
     return this.string.slice(this.start, this.pos)
-  },
-  hideFirstChars: function(n, inner) {
+  }
+  hideFirstChars(n, inner) {
     this.lineStart += n
     try {
       return inner()
     } finally {
       this.lineStart -= n
     }
-  },
+  }
 }
 
 function toCmPos(pos) {

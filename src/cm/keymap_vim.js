@@ -40,6 +40,13 @@
 
 import CodeMirror from '../cm_adapter'
 
+/** Wrapper for special keys pressed in insert mode */
+class InsertModeKey {
+  constructor(keyName) {
+    this.keyName = keyName
+  }
+}
+
 var defaultKeymap = [
   // Key to key mapping. This goes first to make it possible to override
   // existing mappings.
@@ -2864,8 +2871,9 @@ var Vim = function() {
         curEnd = Pos(curStart.line, replaceTo)
       }
       if (replaceWith == '\n') {
-        if (!vim.visualMode) cm.replaceRange('', curStart, curEnd)
-        // special case, where vim help says to replace by just one line-break
+        if (!vim.visualMode)
+          cm.replaceRange('', curStart, curEnd)
+          // special case, where vim help says to replace by just one line-break
         ;(CodeMirror.commands.newlineAndIndentContinueComment || CodeMirror.commands.newlineAndIndent)(cm)
       } else {
         var replaceWithStr = cm.getRange(curStart, curEnd)
@@ -5689,11 +5697,6 @@ var Vim = function() {
       // Reset lastHPos if selection was modified by something outside of vim mode e.g. by mouse.
       vim.lastHPos = cm.getCursor().ch
     }
-  }
-
-  /** Wrapper for special keys pressed in insert mode */
-  function InsertModeKey(keyName) {
-    this.keyName = keyName
   }
 
   /**
