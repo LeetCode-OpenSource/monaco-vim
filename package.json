@@ -2,7 +2,12 @@
   "name": "monaco-vim",
   "version": "0.1.4",
   "description": "Vim keybindings for monaco-editor",
+  "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "test": "echo \"No test in this repo\"",
     "start": "webpack-dev-server --mode development --host=0.0.0.0 --port=8080",
@@ -17,14 +22,6 @@
   "keywords": [
     "monaco-editor",
     "vim"
-  ],
-  "files": [
-    "dist",
-    "lib",
-    "src",
-    "LICENSE",
-    "LICENSE.codemirror.txt",
-    "README.md"
   ],
   "author": "Brijesh Bittu <brijesh@bitwiser.in> (http://bitwiser.in/)",
   "license": "MIT",

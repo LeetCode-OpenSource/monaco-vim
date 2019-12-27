@@ -21,6 +21,7 @@
     ],
 
     "sourceMap": false,
+    "declaration": true,
     "importHelpers": true,
     "newLine": "LF",
     "skipLibCheck": true,
